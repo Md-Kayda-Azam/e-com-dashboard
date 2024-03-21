@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import api from "../../utils/api";
+
 
 // get all brands
 export const getAllBrands = createAsyncThunk(
   "product/getAllBrands",
   async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:5050/api/v1/product/brand",
+      const response = await api.get("/product/brand",
         {
           withCredentials: true,
         }
@@ -23,8 +23,7 @@ export const createBrand = createAsyncThunk(
   "product/createBrand",
   async (data) => {
     try {
-      const response = await axios.post(
-        "http://localhost:5050/api/v1/product/brand",
+      const response = await api.post("/product/brand",
         data,
         {
           withCredentials: true,
@@ -41,8 +40,8 @@ export const deleteBrand = createAsyncThunk(
   "product/deleteBrand",
   async (id) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:5050/api/v1/product/brand/${id}`,
+      const response = await api.delete(
+        `/product/brand/${id}`,
         {
           withCredentials: true,
         }
@@ -59,8 +58,8 @@ export const updatedBrandStatusData = createAsyncThunk(
   "user/updatedBrandStatusData",
   async ({ id, status }) => {
     try {
-      const response = await axios.patch(
-        `http://localhost:5050/api/v1/product/brand/status/${id}`,
+      const response = await api.patch(
+        `/product/brand/status/${id}`,
         { status },
         {
           withCredentials: true,
@@ -77,8 +76,8 @@ export const updatedProductBrand = createAsyncThunk(
   "user/updatedBrandData",
   async ({ data, id }) => {
     try {
-      const response = await axios.put(
-        `http://localhost:5050/api/v1/product/brand/${id}`,
+      const response = await api.put(
+        `/product/brand/${id}`,
         data,
         {
           withCredentials: true,
@@ -96,8 +95,8 @@ export const deleteBrands = createAsyncThunk(
   "user/deleteBrands",
   async (data) => {
     try {
-      const response = await axios.post(
-        `http://localhost:5050/api/v1/product/brand/deleteBrands`,
+      const response = await api.post(
+        `/product/brand/deleteBrands`,
         data,
         {
           withCredentials: true,
@@ -113,8 +112,8 @@ export const deleteBrands = createAsyncThunk(
 // get all product tag
 export const getAllTags = createAsyncThunk("user/getAllTags", async () => {
   try {
-    const response = await axios.get(
-      `http://localhost:5050/api/v1/product/tag/getAllTags`,
+    const response = await api.get(
+      `/product/tag/getAllTags`,
 
       {
         withCredentials: true,
@@ -129,8 +128,8 @@ export const getAllTags = createAsyncThunk("user/getAllTags", async () => {
 // product tag create
 export const createTag = createAsyncThunk("user/createTag", async (data) => {
   try {
-    const response = await axios.post(
-      `http://localhost:5050/api/v1/product/tag`,
+    const response = await api.post(
+      `/product/tag`,
       data,
       {
         withCredentials: true,
@@ -145,8 +144,8 @@ export const createTag = createAsyncThunk("user/createTag", async (data) => {
 // product tag delete
 export const deleteTag = createAsyncThunk("user/deleteTag", async (id) => {
   try {
-    const response = await axios.delete(
-      `http://localhost:5050/api/v1/product/tag/${id}`,
+    const response = await api.delete(
+      `/product/tag/${id}`,
       {
         withCredentials: true,
       }
@@ -161,8 +160,8 @@ export const updatedTag = createAsyncThunk(
   "user/updatedTag",
   async ({ name, id }) => {
     try {
-      const response = await axios.patch(
-        `http://localhost:5050/api/v1/product/tag/${id}`,
+      const response = await api.patch(
+        `/product/tag/${id}`,
         { name },
         {
           withCredentials: true,
@@ -180,8 +179,8 @@ export const updatedStatusTag = createAsyncThunk(
   "user/updatedStatusTag",
   async ({ id, status }) => {
     try {
-      const response = await axios.put(
-        `http://localhost:5050/api/v1/product/tag/status-updated/${id}`,
+      const response = await api.put(
+        `/product/tag/status-updated/${id}`,
         { status },
         {
           withCredentials: true,
@@ -196,8 +195,8 @@ export const updatedStatusTag = createAsyncThunk(
 // product tag deleted
 export const deleteTags = createAsyncThunk("user/deleteTags", async (data) => {
   try {
-    const response = await axios.post(
-      `http://localhost:5050/api/v1/product/tag/deleteTags`,
+    const response = await api.post(
+      `/product/tag/deleteTags`,
       data,
       {
         withCredentials: true,
@@ -214,8 +213,8 @@ export const getAllCategories = createAsyncThunk(
   "user/getAllCategories",
   async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:5050/api/v1/product/category/getAllCategory`,
+      const response = await api.get(
+        `/product/category/getAllCategory`,
         {
           withCredentials: true,
         }
@@ -232,8 +231,8 @@ export const createProductCategory = createAsyncThunk(
   "user/createProductCategory",
   async (data) => {
     try {
-      const response = await axios.post(
-        `http://localhost:5050/api/v1/product/category`,
+      const response = await api.post(
+        `/product/category`,
         data,
         {
           withCredentials: true,
@@ -250,8 +249,8 @@ export const updatedProductCategory = createAsyncThunk(
   "user/updatedProductCategory",
   async ({ data, id }) => {
     try {
-      const response = await axios.put(
-        `http://localhost:5050/api/v1/product/category/${id}`,
+      const response = await api.put(
+        `/product/category/${id}`,
         data,
         {
           withCredentials: true,
@@ -270,8 +269,8 @@ export const updateStatusProductCategory = createAsyncThunk(
   "user/updateStatusProductCategory",
   async ({ id, status }) => {
     try {
-      const response = await axios.put(
-        `http://localhost:5050/api/v1/product/category/statusUpdate/${id}`,
+      const response = await api.put(
+        `/product/category/statusUpdate/${id}`,
         { status },
         {
           withCredentials: true,
@@ -290,8 +289,8 @@ export const deleteProductCategory = createAsyncThunk(
   "user/deleteProductCategory",
   async (id) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:5050/api/v1/product/category/${id}`,
+      const response = await api.delete(
+        `/product/category/${id}`,
         {
           withCredentials: true,
         }
@@ -309,8 +308,8 @@ export const deleteCategories = createAsyncThunk(
   "user/deleteCategories",
   async (data) => {
     try {
-      const response = await axios.post(
-        `http://localhost:5050/api/v1/product/category/deleteCategories`,
+      const response = await api.post(
+        `/product/category/deleteCategories`,
         data,
         {
           withCredentials: true,

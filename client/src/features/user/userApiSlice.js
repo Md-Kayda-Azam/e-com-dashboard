@@ -1,13 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import api from "../../utils/api";
 
 // get all permission
 export const getAllPermission = createAsyncThunk(
   "user/getAllPermission",
   async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:5050/api/v1/permission",
+      const response = await api.get(
+        "/permission",
         {
           withCredentials: true,
         }
@@ -21,7 +21,7 @@ export const getAllPermission = createAsyncThunk(
 // get all roles
 export const getAllRoles = createAsyncThunk("user/getAllRoles", async () => {
   try {
-    const response = await axios.get("http://localhost:5050/api/v1/role", {
+    const response = await api.get("/role", {
       withCredentials: true,
     });
     return response.data;
@@ -34,8 +34,8 @@ export const createPermission = createAsyncThunk(
   "user/createPermission",
   async (data) => {
     try {
-      const response = await axios.post(
-        "http://localhost:5050/api/v1/permission",
+      const response = await api.post(
+        "/permission",
         data,
         {
           withCredentials: true,
@@ -52,8 +52,8 @@ export const deletePermission = createAsyncThunk(
   "user/deletePermission",
   async (id) => {
     try {
-      const response = await axios.delete(
-        `http://localhost:5050/api/v1/permission/${id}`,
+      const response = await api.delete(
+        `/permission/${id}`,
 
         {
           withCredentials: true,
@@ -70,8 +70,8 @@ export const deletePermissions = createAsyncThunk(
   "user/deletePermissions",
   async (data) => {
     try {
-      const response = await axios.post(
-        `http://localhost:5050/api/v1/permission/deletePermissions`,
+      const response = await api.post(
+        `/permission/deletePermissions`,
         data,
 
         {
@@ -87,8 +87,8 @@ export const deletePermissions = createAsyncThunk(
 // delete permission
 export const deleteRole = createAsyncThunk("user/deleteRole", async (id) => {
   try {
-    const response = await axios.delete(
-      `http://localhost:5050/api/v1/role/${id}`,
+    const response = await api.delete(
+      `/role/${id}`,
 
       {
         withCredentials: true,
@@ -104,8 +104,8 @@ export const deleteRoles = createAsyncThunk(
   "user/deleteRoles",
   async (data) => {
     try {
-      const response = await axios.post(
-        `http://localhost:5050/api/v1/role/deleteRoles`,
+      const response = await api.post(
+        `/role/deleteRoles`,
         data,
 
         {
@@ -123,8 +123,8 @@ export const updatePermissionStatusData = createAsyncThunk(
   "user/updatePermissionStatusData",
   async ({ id, status }) => {
     try {
-      const response = await axios.post(
-        `http://localhost:5050/api/v1/permission/${id}`,
+      const response = await api.post(
+        `/permission/${id}`,
         { status },
         {
           withCredentials: true,
@@ -141,8 +141,8 @@ export const updateRoleStatusData = createAsyncThunk(
   "user/updateRoleStatusData",
   async ({ id, status }) => {
     try {
-      const response = await axios.post(
-        `http://localhost:5050/api/v1/role/${id}`,
+      const response = await api.post(
+        `/role/${id}`,
         { status },
         {
           withCredentials: true,
@@ -158,8 +158,7 @@ export const updateRoleStatusData = createAsyncThunk(
 // create role
 export const createRole = createAsyncThunk("user/createRole", async (data) => {
   try {
-    const response = await axios.post(
-      "http://localhost:5050/api/v1/role",
+    const response = await api.post("/role",
       data,
       {
         withCredentials: true,
@@ -173,8 +172,8 @@ export const createRole = createAsyncThunk("user/createRole", async (data) => {
 // update role
 export const updateRole = createAsyncThunk("user/updateRole", async (data) => {
   try {
-    const response = await axios.put(
-      `http://localhost:5050/api/v1/role/${data.id}`,
+    const response = await api.put(
+      `/role/${data.id}`,
       data,
       {
         withCredentials: true,
@@ -188,8 +187,7 @@ export const updateRole = createAsyncThunk("user/updateRole", async (data) => {
 // create user
 export const createUser = createAsyncThunk("user/createUser", async (data) => {
   try {
-    const response = await axios.post(
-      "http://localhost:5050/api/v1/user",
+    const response = await api.post("/user",
       data,
       {
         withCredentials: true,
@@ -203,8 +201,7 @@ export const createUser = createAsyncThunk("user/createUser", async (data) => {
 // get all users
 export const getAllUsers = createAsyncThunk("user/getAllUsers", async () => {
   try {
-    const response = await axios.get(
-      "http://localhost:5050/api/v1/user",
+    const response = await api.get("/user",
 
       {
         withCredentials: true,
@@ -218,8 +215,8 @@ export const getAllUsers = createAsyncThunk("user/getAllUsers", async () => {
 // delete user
 export const deleteUser = createAsyncThunk("user/deleteUser", async (id) => {
   try {
-    const response = await axios.delete(
-      `http://localhost:5050/api/v1/user/${id}`,
+    const response = await api.delete(
+      `/user/${id}`,
 
       {
         withCredentials: true,
@@ -235,8 +232,8 @@ export const updateUserStatusData = createAsyncThunk(
   "user/updateUserStatusData",
   async ({ id, status }) => {
     try {
-      const response = await axios.post(
-        `http://localhost:5050/api/v1/user/${id}`,
+      const response = await api.post(
+        `/user/${id}`,
         { status },
         {
           withCredentials: true,
@@ -253,8 +250,8 @@ export const updateUser = createAsyncThunk(
   "user/updateUserUpdate",
   async (data) => {
     try {
-      const response = await axios.put(
-        `http://localhost:5050/api/v1/user/${data._id}`,
+      const response = await api.put(
+        `/user/${data._id}`,
         data,
         {
           withCredentials: true,
@@ -271,8 +268,8 @@ export const deleteUsers = createAsyncThunk(
   "user/deleteUsers",
   async (data) => {
     try {
-      const response = await axios.post(
-        `http://localhost:5050/api/v1/user/deleteUsers`,
+      const response = await api.post(
+        `/user/deleteUsers`,
         data,
         {
           withCredentials: true,

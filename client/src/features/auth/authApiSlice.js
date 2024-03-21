@@ -1,11 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import api from "../../utils/api";
 
 // register user
 export const createUser = createAsyncThunk("auth/createUser", async (data) => {
   try {
-    const response = await axios.post(
-      "http://localhost:5050/api/v1/auth/register",
+    const response = await api.post("/auth/register",
       data,
       {
         withCredentials: true,
@@ -22,8 +21,7 @@ export const createUser = createAsyncThunk("auth/createUser", async (data) => {
  */
 export const loginUser = createAsyncThunk("auth/loginUser", async (data) => {
   try {
-    const response = await axios.post(
-      "http://localhost:5050/api/v1/auth/login",
+    const response = await api.post("/auth/login",
       data,
       {
         withCredentials: true,
@@ -39,8 +37,7 @@ export const loginUser = createAsyncThunk("auth/loginUser", async (data) => {
  */
 export const logOutUser = createAsyncThunk("auth/logOutUser", async () => {
   try {
-    const response = await axios.post(
-      "http://localhost:5050/api/v1/auth/logout",
+    const response = await api.post("/auth/logout",
       " ",
       {
         withCredentials: true,
@@ -56,7 +53,7 @@ export const logOutUser = createAsyncThunk("auth/logOutUser", async () => {
  */
 export const getLoginUser = createAsyncThunk("auth/getLoginUser", async () => {
   try {
-    const response = await axios.get("http://localhost:5050/api/v1/auth/me", {
+    const response = await api.get("/auth/me", {
       withCredentials: true,
     });
     return response.data;
@@ -71,7 +68,7 @@ export const forgotPassword = createAsyncThunk(
   "auth/forgotPassword",
   async (data) => {
     try {
-      const response = await axios.post(
+      const response = await api.post(
         "http://localhost:5050/api/v1/auth/send-password-reset-opt",
         data,
         {
@@ -91,7 +88,7 @@ export const CheckPaswordCode = createAsyncThunk(
   "auth/CheckPaswordCode",
   async (data) => {
     try {
-      const response = await axios.post(
+      const response = await api.post(
         "http://localhost:5050/api/v1/auth/check-password-reset-otp",
         data,
         {
@@ -111,7 +108,7 @@ export const ChangePasswordReset = createAsyncThunk(
   "auth/ChangePasswordReset",
   async (data) => {
     try {
-      const response = await axios.post(
+      const response = await api.post(
         "http://localhost:5050/api/v1/auth/user-password-reset",
         data,
         {
@@ -129,7 +126,7 @@ export const profilePasswordChange = createAsyncThunk(
   "user/profilePasswordChange",
   async (data) => {
     try {
-      const response = await axios.patch(
+      const response = await api.patch(
         `http://localhost:5050/api/v1/auth/cp/${data.id}`,
         data,
         {
@@ -148,7 +145,7 @@ export const profileUpdate = createAsyncThunk(
   "user/profileUpdate",
   async (data) => {
     try {
-      const response = await axios.put(
+      const response = await api.put(
         `http://localhost:5050/api/v1/auth/profile-update/${data.id}`,
         data,
         {
@@ -166,7 +163,7 @@ export const profilePhotoUpdate = createAsyncThunk(
   "user/profilePhotoUpdate",
   async ({ data, id }) => {
     try {
-      const response = await axios.patch(
+      const response = await api.patch(
         `http://localhost:5050/api/v1/auth/profile-photo-update/${id}`,
         data,
         {

@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: ["http://localhost:3000", "https://dashboard.onrender.com/"],
+    origin: [process.env.DOMAIN.split(',')],
     credentials: true,
   })
 );
@@ -47,6 +47,15 @@ const PORT = process.env.PORT || 5056;
 
 // error handler
 app.use(errorHandle);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/client/dist')));
+
+  app.get('*', (req, res) =>
+    res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'))
+  );
+}
+
 
 app.listen(PORT, () => {
   mongoDBConnect();
