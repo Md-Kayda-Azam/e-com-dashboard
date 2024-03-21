@@ -1,0 +1,23 @@
+.dataTables_filter {
+  display: none;
+}
+
+.card-table {
+  padding: 30px;
+}
+
+.dataTables_paginate {
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+}
+
+.rdt_TableCell {
+  font-size: 15px;
+}
+
+.rdt_TableCol {
+  font-size: 15px;
+}
